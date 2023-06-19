@@ -32,9 +32,7 @@ Access the server with: `nc 139.59.0.163 3555`
 
 We are given a binary. Let's load it into Ghidra.
 
-<details>
-    <Summary>Ghidra Black Magic</Summary>
-
+??? Ghidra_black_magic
     ```c
     int overflew(int sum,int n1,int n2,int n3){
         int r;
@@ -115,7 +113,6 @@ We are given a binary. Let's load it into Ghidra.
         return 0;
     }
     ```
-</details>
 
 
 The program does nothing out of ordinary. It takes Three integers as input, adds them up and checks if the result has caused any overflow or not with the `overflew` function. The way it checks for overflow is by the following condition: `(((n1 < 1) || (n2 < 1)) || (n3 < 1)) || (0 < sum)`. So, by this function, overflow occurs if either the sum is less than 0 or any one of the numbers is less than 1. By sane logic it might be hard to get that how can you add three poisitive integers greater than 0 but still get a sum greater than zero that is somehow less than any one of the integers that were added. But if we talk about computers, `meh`.

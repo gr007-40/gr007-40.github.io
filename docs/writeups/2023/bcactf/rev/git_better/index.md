@@ -313,15 +313,3 @@ Submit the block and get the flag
 
 > Note: `Git Even Better` uses a large prime as the modPrime. There is another way to get a hash collision but that has to do with cryptography. Apparantly the hashing algorithm is also vulnerable to some degree.
 
-
-
-
-
-
-
-
-
-
-
-
-

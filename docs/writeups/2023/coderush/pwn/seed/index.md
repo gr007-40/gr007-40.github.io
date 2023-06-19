@@ -33,9 +33,7 @@ If you can correctly tell me what my guess is I will give you my precious flag.
 
 We are given a binary seed file. Let's load it up with Ghidra.
 
-<details>
-    <Summary>Ghidra witchery</Summery>
-
+??? Ghidra_witchery
     ```c
     int main(void)
     {
@@ -82,7 +80,6 @@ We are given a binary seed file. Let's load it up with Ghidra.
         return 0;
     }
     ```
-</details>
 
 So, What we need to do is match with the server and output the same random number that the server generates. This is pretty easy. We just need to know one basic thing that the sequence of random numbers depends on the seed that is given to the random number generator. The c random number generator always defaults to some seed for which the random number that it starts with is always the same no matter the hardware or software. Thus, the first random number is always the same. If that number is used as seed, we get the same sequence. let us generate the same sequence by re-producing the main function in [`sol.c`](sol.c).
 
@@ -90,4 +87,4 @@ So, What we need to do is match with the server and output the same random numbe
 
 ![voila](voila.png)
 
-#### flag: `coderush{t0d@y_@_533d_70m0rr0w_@7r33}`
+flag: `coderush{t0d@y_@_533d_70m0rr0w_@7r33}`

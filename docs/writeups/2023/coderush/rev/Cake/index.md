@@ -34,9 +34,7 @@ I have done some light renaming and so on. now let's try to recreate the recipe.
 
 ### Ghidra black magic
 
-<details>
-    <Summary>recipe from ghidra</Summary>
-
+??? recipe_from_ghidra
     ```c
     byte taste_cake(char *cake)
 
@@ -215,15 +213,12 @@ I have done some light renaming and so on. now let's try to recreate the recipe.
     }
 
     ```
-</details>
 
 ### Function breakdown
 
 #### main
 
-<details>
-    <Summary>main</Summary>
-
+??? main
     ```c
     int main(){
         char c;
@@ -263,7 +258,6 @@ I have done some light renaming and so on. now let's try to recreate the recipe.
         return 0;
     }
     ```
-</details>
 
 The main function takes the `secret_ingredient` using read function. Then checks for length. So, we know that the length of the secret_ingredient is 23. then there is a call to `bake_a_cake(secret_ingredient)`. the function returns a `cake` and the `cake` is then served by `serve_the_cake(cake)` function. We now write a function that will do the opposite of what the main function does in another main function.
 ```c
@@ -277,9 +271,7 @@ As we saw in `serve_the_cake` function, the function compares the output of `bak
 
 #### bake_a_cake
 
-<details>
-    <Summary>bake_a_cake</Summary>
-
+??? bake_a_cake
     ```c
     char* bake_a_cake(char* secret_ingredient){
         long in_FS_OFFSET;
@@ -301,7 +293,6 @@ As we saw in `serve_the_cake` function, the function compares the output of `bak
         return secret_ingredient;
     }
     ```
-</details>
 
 It has an interesting type that is `code*` for those of you who do not know, `code*` is basically a function pointer. How code pointer is function pointer is not the part of discussion. This function first initializes an array of function pointers with addresses of functions in order. Then using a for loop, the functions are being called by giving the secret_ingredient as a parameter to the function. These functions use the secret_ingredient and then returns the secret ingredient as cake. Now, let's write a function that will take a `cake` as input and will give a `secret_ingredient` as output.
 
@@ -317,9 +308,7 @@ char* cake_a_bake(char* cake){
 
 #### prepare
 
-<details>
-    <Summary>prepare</Summary>
-
+??? prepare
     ```c
     char* prepare(char* secret_ingredient){
         int i;
@@ -333,7 +322,6 @@ char* cake_a_bake(char* cake){
         return;
     }
     ```
-</details>
 
 we see a loop that modifies our secret_ingredient. At first, it looks like whatever is happening inside the loop  does not look good. But if you look closely, if we take `secret_ingredient[i]-84` as `z`, the expression becomes:
 ```c
@@ -363,9 +351,7 @@ void wait(char* cake){
 
 #### whisk_and_mix
 
-<details>
-    <Summary>whisk_and_mix</Summary>
-
+??? whisk_and_mix
     ```c
     void whisk_and_mix(char* secret_ingredient){
         int i;
@@ -389,7 +375,6 @@ void wait(char* cake){
         return;
     }
     ```
-</details>
 
 Our secret_len/2 is 11. so, the outer loop loops 11 times. the inner loop runs for every characters in the secret_ingredient. Let's see what happens in the inner loop after cleaning a bit:
 ```c
@@ -416,9 +401,7 @@ void separate_and_deadle(char* cake){
 
 #### bake_and_frost
 
-<details>
-    <Summary>bake_and_frost</Summary>
-
+??? bake_and_frost
     ```c
     void bake_and_frost(char* secret_ingredient){
         int i;
@@ -437,7 +420,6 @@ void separate_and_deadle(char* cake){
         return;
     }
     ```
-</details>
 
 The bake and frost function does the following to every characters of the secret_ingredient from first to last 2^23 times:
 ```c
@@ -456,9 +438,7 @@ void defrost_and_dake(char* cake){
 
 #### serve_the_cake and taste_cake
 
-<details>
-    <Summary>serve_the_cake</Summary>
-
+??? serve_the_cake
     ```c
     void serve_the_cake(char* cake){
         int tasty;
@@ -491,13 +471,10 @@ void defrost_and_dake(char* cake){
         return;
     }
     ```
-</details>
 
 this function is our target. upon successfully getting 1 from taste_cake, we will recieve the flag.txt from the server.
 
-<details>
-    <Summary>taste_cake</Summary>
-
+??? taste_cake
     ```c
     byte taste_cake(char* cake){
         int i;
@@ -519,7 +496,6 @@ this function is our target. upon successfully getting 1 from taste_cake, we wil
         return f;
     }
     ```
-</details>
 
 Though it feels weird, the 23 consecutive bytes in some_cake needs to be extracted byte by byte for us to reconstruct the cake. We have to take note of endianness and reverse each 8 bytes to get the correct order.
 
@@ -598,4 +574,4 @@ Annd voila we got our flag:
 
 ![voila](voila.png)
 
-##### flag: `coderush{7h3_c@k3_w@5_5up3r_d3l15h}`
+flag: `coderush{7h3_c@k3_w@5_5up3r_d3l15h}`

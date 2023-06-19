@@ -55,5 +55,5 @@ After compiling the program, we run the program and pipe the output to keasy.
 ```bash
 ./sol | ./keasy
 ```
-## Flag: `coderush{ru5h_0f_n@p0l30n}`
+flag: `coderush{ru5h_0f_n@p0l30n}`
 

@@ -22,12 +22,8 @@ comments: true
 
 Can you find the flag from the [file](./chal.txt) attached?
 
-<<<<<<< HEAD
-??? note file contents
-=======
-??? file\ contents
+??? file_contents
     ```
->>>>>>> a78992b (change syntax test)
       3           0 LOAD_CONST               1 (4919)
                   2 STORE_FAST               0 (k)
 
@@ -80,10 +76,7 @@ Can you find the flag from the [file](./chal.txt) attached?
                  88 RETURN_VALUE
 
     n =  [4679, 4631, 4775, 4839, 4951, 4295, 4487, 4519, 4439, 4839, 4231, 5095, 5959, 5623, 4855, 5127, 5751, 5703, 6103]
-<<<<<<< HEAD
-=======
     ```
->>>>>>> a78992b (change syntax test)
 
 
 ## Solution
@@ -102,46 +95,33 @@ The goal is to reverse engineer the flag from the output list `n`. The sauce is 
 
 The `len` function is loaded on the stack first then it's parameter `flag`. So, the overall call stands for `len(flag)`. This is also true for operations involving more than one operands or parameters like `XOR` `ADD` `SUBTRACT`, etc. Similarly, we keep decompiling the source. You should decompile the rest by yourselves before continuing.
 
-<details>
-<summary>Decompiled source</summary>
+??? Decompiled_source
+    ```python
+    k = 4919
 
-```python
-k = 4919
+    flag = 'CTF_BD{__REDACTED__}'
 
-flag = 'CTF_BD{__REDACTED__}'
+    n = []
 
-n = []
+    for i in range(len(flag)-1):
+        n.append(k ^ ((ord(flag[i]) ^ ord(flag[i + 1])) << 4))
 
-for i in range(len(flag)-1):
-    n.append(k ^ ((ord(flag[i]) ^ ord(flag[i + 1])) << 4))
+    print('n = ',n)
+    ```
 
-print('n = ',n)
-```
+??? Solution
+    ```python
+    k = 4919
 
-</details>
+    n = [4679, 4631, 4775, 4839, 4951, 4295, 4487, 4519, 4439, 4839, 4231, 5095, 5959, 5623, 4855, 5127, 5751, 5703, 6103]
 
-<details>
-<summary>Solution</summary>
+    flag = 'C'
 
-```python
-k = 4919
+    for i in range(len(n)):
+        flag += chr((k ^ n[i]) >> 4 ^ ord(flag[i]))
 
-n = [4679, 4631, 4775, 4839, 4951, 4295, 4487, 4519, 4439, 4839, 4231, 5095, 5959, 5623, 4855, 5127, 5751, 5703, 6103]
+    print(flag)
+    ```
 
-flag = 'C'
-
-for i in range(len(n)):
-    flag += chr((k ^ n[i]) >> 4 ^ ord(flag[i]))
-
-print(flag)
-```
-
-</details>
-
-<details>
-<summary>flag</summary>
-
-`CTF_BD{Py_Byt3_C0d3}`
-
-</details>
+flag: `CTF_BD{Py_Byt3_C0d3}`
 
