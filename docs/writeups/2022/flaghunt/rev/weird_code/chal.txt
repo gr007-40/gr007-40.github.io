@@ -1,0 +1,50 @@
+  3           0 LOAD_CONST               1 (4919)
+              2 STORE_FAST               0 (k)
+
+  4           4 LOAD_CONST               2 ('CTF_BD{__REDACTED__}')
+              6 STORE_FAST               1 (flag)
+
+  5           8 BUILD_LIST               0
+             10 STORE_FAST               2 (n)
+
+  6          12 LOAD_GLOBAL              0 (range)
+             14 LOAD_GLOBAL              1 (len)
+             16 LOAD_FAST                1 (flag)
+             18 CALL_FUNCTION            1
+             20 LOAD_CONST               3 (1)
+             22 BINARY_SUBTRACT
+             24 CALL_FUNCTION            1
+             26 GET_ITER
+        >>   28 FOR_ITER                46 (to 76)
+             30 STORE_FAST               3 (i)
+
+  7          32 LOAD_FAST                2 (n)
+             34 LOAD_METHOD              2 (append)
+             36 LOAD_FAST                0 (k)
+             38 LOAD_GLOBAL              3 (ord)
+             40 LOAD_FAST                1 (flag)
+             42 LOAD_FAST                3 (i)
+             44 BINARY_SUBSCR
+             46 CALL_FUNCTION            1
+             48 LOAD_GLOBAL              3 (ord)
+             50 LOAD_FAST                1 (flag)
+             52 LOAD_FAST                3 (i)
+             54 LOAD_CONST               3 (1)
+             56 BINARY_ADD
+             58 BINARY_SUBSCR
+             60 CALL_FUNCTION            1
+             62 BINARY_XOR
+             64 LOAD_CONST               4 (4)
+             66 BINARY_LSHIFT
+             68 BINARY_XOR
+             70 CALL_METHOD              1
+             72 POP_TOP
+             74 JUMP_ABSOLUTE           28
+
+  8     >>   76 LOAD_GLOBAL              4 (print)
+             78 LOAD_CONST               5 ('n = ')
+             80 LOAD_FAST                2 (n)
+             82 CALL_FUNCTION            2
+             84 POP_TOP
+             86 LOAD_CONST               0 (None)
+             88 RETURN_VALUE

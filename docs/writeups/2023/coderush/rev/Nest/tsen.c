@@ -1,0 +1,43 @@
+#include <stdio.h>
+int main(){                                                                                                       
+        char flag [41];                                                                                               
+        flag[36] = '}';                                                                                              
+        flag[6] = 's';                                                                                               
+        flag[25] = '5';                                                                                              
+        flag[2] = 'd';                                                                                               
+        flag[27] = '1';                                                                                              
+        flag[0] = 'c';                                                                                               
+        flag[21] = 'c';                                                                                              
+        flag[17] = 'n';                                                                                              
+        flag[4] = 'r';                                                                                               
+        flag[29] = '_';                                                                                              
+        flag[20] = '_';                                                                                              
+        flag[13] = '0';                                                                                              
+        flag[32] = 'r';                                                                                              
+        flag[11] = 'c';                                                                                              
+        flag[3] = 'e';                                                                                               
+        flag[30] = '5';                                                                                              
+        flag[26] = '_';                                                                                              
+        flag[15] = '_';                                                                                              
+        flag[8] = '{';                                                                                               
+        flag[35] = 'g';                                                                                              
+        flag[28] = 'n';                                                                                              
+        flag[16] = '0';                                                                                              
+        flag[18] = 'l';                                                                                              
+        flag[24] = '3';                                                                                              
+        flag[22] = '0';                                                                                              
+        flag[23] = 'm';                                                                                              
+        flag[31] = 'p';                                                                                              
+        flag[14] = '0';                                                                                              
+        flag[1] = 'o';                                                                                               
+        flag[33] = '1';                                                                                              
+        flag[12] = 'k';                                                                                              
+        flag[10] = 'u';                                                                                              
+        flag[5] = 'u';                                                                                               
+        flag[7] = 'h';                                                                                               
+        flag[9] = 'c';                                                                                               
+        flag[34] = 'n';                                                                                              
+        flag[19] = 'y';                                                                                              
+        puts(flag);                                                                                                   
+        return 0;                                                                                                     
+    }                      

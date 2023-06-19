@@ -1,0 +1,246 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: gr007
+site_url: https://gr007-40.github.io
+repo_url: https://github.com/gr007-40/gr007-40.github.io
+repo_name: gr007-40/gr007-40.github.io
+site_author: Md Abdullahil Kafi
+site_description: >-
+  This site is a digital home to my thoughts and experiences.
+  I also share my ctf writeups here time to time.
+
+theme:
+  name: material
+
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+
+  font:
+    text: Fira Code
+    code: Fira Mono
+
+  icon:
+    repo: fontawesome/brands/git-alt
+    tag:
+      rev: material/heart
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    # - navigation.prune
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+
+    - toc.follow
+    - toc.integrate
+
+    - search.suggest
+    - search.share
+    - search.highlight
+
+    - header.autohide
+
+    # - content.code.select
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.action.view
+
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: black
+      accent: pink
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: pink
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+nav:
+  - Tags:
+      - tags.md
+  - Blog:
+    - posts:
+      - blog/index.md
+      - blog/posts/first-blog.md
+  - Writeups:
+      - writeups/index.md
+      - writeups/2022/flaghunt/rev/weird_code/index.md
+      - writeups/2023/coderush/rev/Cake/index.md
+      - writeups/2023/coderush/rev/keasy/index.md
+      - writeups/2023/coderush/rev/matrix/index.md
+      - writeups/2023/coderush/rev/Nest/index.md
+      - writeups/2023/coderush/pwn/format_string/index.md
+      - writeups/2023/coderush/pwn/seed/index.md
+      - writeups/2023/coderush/pwn/three_sum/index.md
+      - writeups/2023/bcactf/rev/git_better/index.md
+
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: false
+      cache_safe: true
+
+  - git-revision-date-localized
+
+  # - typeset
+  # - table-reader
+  - glightbox
+
+  # - privacy:
+  #     external_links_attr_map:
+  #       target: _blank
+  #     external_links_noopener: true
+
+  - social
+  # - meta
+  - tags:
+      tags_file: tags.md
+
+  # - blog:
+  #     draft_if_future_date: true
+
+  # - rss:
+  #     match_path: blog/posts/.*
+  #     date_from_meta:
+  #       as_creation: date
+  #     categories:
+  #       - categories
+  #       - tags
+  #     comments_path: "#__comments"
+
+  - offline
+
+  # - redirects:
+  #     redirect_maps:
+  #         'old.md': 'new.md'
+  #         'old/file.md': 'new/file.md'
+  #         'some_file.md': 'http://external.url.com/foobar'
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - tables
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+copyright: Copyright &copy; 2023 - 2023 Md Abdullahil Kafi
+
+extra:
+  tags:
+    rev: rev
+
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gr007-40
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/gr00t.40
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/gr007/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/groot_40
+
+  # version:
+  #   provider: mike
+
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+  analytics:
+    provider: google
+    property: G-1RDL12C867
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/heart
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/heart-broken
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback!
+            # Help us improve this page by
+            # using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css

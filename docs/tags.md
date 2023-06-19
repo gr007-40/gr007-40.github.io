@@ -1,0 +1,7 @@
+---
+hide:
+  - nav
+---
+# Tags
+
+[TAGS]
