@@ -53,43 +53,35 @@ theme:
     - content.action.view
 
   palette:
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: black
-      accent: red
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: black
-      accent: red
+      accent: blue
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
 
+    # Palette toggle for light mode
+    - scheme: default
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+
 nav:
-
-  - Tags:
-
-    - tags.md
-
-  - Blog:
-
-    - blog/posts/hello-world.md
 
   - Writeups:
 
-    - 2022:
+    - '2023':
 
-      - flaghunt:
+      - bcactf:
+
         - rev:
-          - writeups/2022/flaghunt/rev/weird_code/index.md
 
-    - 2023:
+          - writeups/2023/bcactf/rev/git_better/index.md
 
       - coderush:
 
@@ -106,14 +98,23 @@ nav:
           - writeups/2023/coderush/pwn/seed/index.md
           - writeups/2023/coderush/pwn/three_sum/index.md
 
-      - bcactf:
+    - '2022':
 
+      - flaghunt:
         - rev:
+          - writeups/2022/flaghunt/rev/weird_code/index.md
 
-          - writeups/2023/bcactf/rev/git_better/index.md
+  - Blog:
+
+    - blog/posts/hello-world.md
+
+  - Tags:
+
+    - tags.md
 
 
 plugins:
+
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
