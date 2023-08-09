@@ -3,7 +3,7 @@
 site_name: gr007
 site_url: https://gr007-40.github.io
 repo_url: https://github.com/gr007-40/gr007-40.github.io
-repo_name: gr007-40/gr007-40.github.io
+repo_name: gr007-40.github.io
 site_author: Md Abdullahil Kafi
 site_description: >-
   This site is a digital home to my thoughts and experiences.
@@ -21,24 +21,23 @@ theme:
 
   icon:
     repo: fontawesome/brands/git-alt
+    # TODO: Define icons for each categories
     tag:
-      rev: material/heart
+      pwn: material/bug
+      # rev: some icon
+      # mkdocs: some icon
 
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
-    # - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
-    - navigation.path
-    # - navigation.prune
+    # - navigation.path # sponsor feature
+    - navigation.prune
     - navigation.indexes
     - navigation.top
     - navigation.footer
 
     - toc.follow
-    - toc.integrate
 
     - search.suggest
     - search.share
@@ -46,27 +45,19 @@ theme:
 
     - header.autohide
 
-    # - content.code.select
+    # - content.code.select # sponsor feature
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
-    - content.tooltips
+    # - content.tooltips # sponsor feature
     - content.action.view
 
   palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      primary: black
-      accent: pink
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: green
-      accent: pink
+      primary: black
+      accent: red
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -75,34 +66,70 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: green
+      accent: red
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference
+        name: Switch to light mode
 
 nav:
+
   - Tags:
-      - tags.md
+
+    - tags.md
+
   - Blog:
-    - posts:
-      - blog/index.md
-      - blog/posts/first-blog.md
+
+    - blog/posts/hello-world.md
+
   - Writeups:
-      - writeups/index.md
-      - writeups/2022/flaghunt/rev/weird_code/index.md
-      - writeups/2023/coderush/rev/Cake/index.md
-      - writeups/2023/coderush/rev/keasy/index.md
-      - writeups/2023/coderush/rev/matrix/index.md
-      - writeups/2023/coderush/rev/Nest/index.md
-      - writeups/2023/coderush/pwn/format_string/index.md
-      - writeups/2023/coderush/pwn/seed/index.md
-      - writeups/2023/coderush/pwn/three_sum/index.md
-      - writeups/2023/bcactf/rev/git_better/index.md
+
+    - 2022:
+
+      - flaghunt:
+        - rev:
+          - writeups/2022/flaghunt/rev/weird_code/index.md
+
+    - 2023:
+
+      - coderush:
+
+        - rev:
+
+          - writeups/2023/coderush/rev/Cake/index.md
+          - writeups/2023/coderush/rev/keasy/index.md
+          - writeups/2023/coderush/rev/matrix/index.md
+          - writeups/2023/coderush/rev/Nest/index.md
+
+        - pwn:
+
+          - writeups/2023/coderush/pwn/format_string/index.md
+          - writeups/2023/coderush/pwn/seed/index.md
+          - writeups/2023/coderush/pwn/three_sum/index.md
+
+      - bcactf:
+
+        - rev:
+
+          - writeups/2023/bcactf/rev/git_better/index.md
 
 
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+
+  # Sponsor feature
+  # - optimize:
+  #     enabled: true
+  #     cache: true
+  #     cache_dir: .cache/plugins/social
+  #     optimize_png: true
+  #     optimize_png_speed: 4
+  #     optimize_png_strip: true
+  #     optimize_jpg: true
+  #     optimize_jpg_quality: 60
+  #     optimize_jpg_progressive: true
+  #     print_gain: true
+  #     print_gain_summary: true
 
   - minify:
       minify_html: true
@@ -112,33 +139,50 @@ plugins:
         remove_comments: false
       cache_safe: true
 
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      type: datetime
+      enable_creation_date: true
+      fallback_to_build_date: true
 
-  # - typeset
-  # - table-reader
-  - glightbox
+  - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+       width: 100%
+       height: auto
+       zoomable: true
+       draggable: true
+       skip_classes:
+         - custom-skip-class-name
+       auto_caption: false
+       caption_position: bottom
 
-  # - privacy:
-  #     external_links_attr_map:
-  #       target: _blank
-  #     external_links_noopener: true
+  - social:
+      enabled: true
+      cards: true
 
-  - social
-  # - meta
   - tags:
+      enabled: true
       tags_file: tags.md
 
-  # - blog:
-  #     draft_if_future_date: true
-
-  # - rss:
-  #     match_path: blog/posts/.*
-  #     date_from_meta:
-  #       as_creation: date
-  #     categories:
-  #       - categories
-  #       - tags
-  #     comments_path: "#__comments"
+  # - meta # sponsor feature
+  - blog:
+      enabled: true
+      archive_date_format: MMMM yyyy
+      archive_url_date_format: yyyy/MM
+      archive_url_format: "archive/{date}"
+      archive_toc: true
+      categories: true
+      blog_toc: true
+      post_date_format: full
+      draft_if_future_date: true
+      categories_toc: true
+      categories_allowed:
+        - Linux
+        - CTF
+        - Nixos
+        - Guide
 
   - offline
 
@@ -165,13 +209,18 @@ markdown_extensions:
       generic: true
   - pymdownx.betterem:
       smart_enable: all
-  - pymdownx.critic
+  - pymdownx.critic:
+      mode: view
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
       emoji_generator: !!python/name:materialx.emoji.to_svg
       emoji_index: !!python/name:materialx.emoji.twemoji
   - pymdownx.highlight:
+      use_pygments: true
+      auto_title: true
+      linenums: true
+      linenums_style: pymdownx-inline
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
@@ -189,13 +238,14 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+      clickable_checkbox: true
   - pymdownx.tilde
-
-copyright: Copyright &copy; 2023 - 2023 Md Abdullahil Kafi
 
 extra:
   tags:
-    rev: rev
+    pwn: pwn
+    # rev: rev
+    # mkdocs: mkdocs
 
   social:
     - icon: fontawesome/brands/github
@@ -203,44 +253,21 @@ extra:
     - icon: fontawesome/brands/facebook
       link: https://www.facebook.com/gr00t.40
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/gr007/
+      link: https://www.linkedin.com/in/gr007
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/groot_40
-
-  # version:
-  #   provider: mike
-
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
-
-  analytics:
-    provider: google
-    property: G-1RDL12C867
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/heart
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/heart-broken
-          name: This page could be improved
-          data: 0
-          note: >-
-            Thanks for your feedback!
-            # Help us improve this page by
-            # using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
 
 extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
 extra_css:
   - stylesheets/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+copyright: Copyright &copy; 2023 - 2023 Md Abdullahil Kafi

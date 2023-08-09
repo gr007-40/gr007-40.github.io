@@ -1,17 +1,11 @@
 ---
-hide:
-  - tags
-draft: true
+comments: true
 authors:
   - gr007
-date: 2023-06-19
-categories:
-  - rev
 tags:
   - pwn
   - coderush
   - '2023'
-comments: true
 ---
 
 # format_string ftw

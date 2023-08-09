@@ -1,17 +1,11 @@
 ---
-hide:
-  - tags
-draft: true
+comments: true
 authors:
   - gr007
-date: 2023-06-19
-categories:
-  - rev
 tags:
   - rev
-  - coderush
   - '2023'
-comments: true
+  - flaghunt
 ---
 
 # Chocolate Cake

@@ -1,18 +1,13 @@
 ---
-hide:
-  - tags
-draft: true
+comments: true
 authors:
   - gr007
-date: 2023-06-19
-categories:
-  - rev
 tags:
   - rev
-  - crypto
   - bcactf
   - '2023'
-comments: true
+  - crypto
+  - web
 ---
 # Git Better
 

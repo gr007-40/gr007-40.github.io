@@ -1,19 +1,12 @@
 ---
-hide:
-  - tags
 draft: true
+date: 2023-08-11
 authors:
   - gr007
-date: 2023-05-01
 categories:
-  - Hello
-  - World
+  - Guide
 tags:
-  - hello
-  - world
-  - rev
-links:
-  - External link: https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#blogarchive2022
+  - mkdocs
 comments: true
 ---
 

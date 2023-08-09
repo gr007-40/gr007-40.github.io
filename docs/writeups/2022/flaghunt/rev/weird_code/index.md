@@ -1,19 +1,13 @@
 ---
-hide:
-  - tags
-draft: true
+comments: true
 authors:
   - gr007
-date: 2023-06-19
-categories:
-  - rev
 tags:
-  - xor
-  - python
   - rev
   - flaghunt
   - '2022'
-comments: true
+  - xor
+  - python
 ---
 
 # Weird Code

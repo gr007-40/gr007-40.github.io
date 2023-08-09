@@ -1,19 +1,35 @@
 ---
-hide:
-  - tags
-draft: true
+comments: true
 authors:
   - gr007
-date: 2023-06-19
-categories:
-  - rev
 tags:
   - rev
-  - coderush
   - '2023'
-comments: true
+  - flaghunt
 ---
+
 # Keasy
+
+## Description
+
+I am a fan of random numbers.
+I encrypted the flag with a random key.
+I then threw the key into the `/dev/null` blackhole.
+Now I can't retrieve the flag.
+But I heard your team specializes in retrieving keys from there.
+
+Like Napoleon Once said:
+`Give me the key. I shall give you the flag.`
+
+This [file](keasy) has the encrypted flag in it. You can also use this file to decrypt the flag.
+
+**flag format:** `coderush{fl4g}`
+
+>Author: `gr007`
+
+### Hint
+
+The key does not necessarily have to be comprised of printable ascii characters.
 
 ## Solution
 
