@@ -53,23 +53,31 @@ theme:
     - content.action.view
 
   palette:
-
-    # Palette toggle for dark mode
-    - scheme: slate
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
       primary: black
-      accent: blue
+      accent: pink
       toggle:
-        icon: material/brightness-4
+        icon: material/brightness-auto
         name: Switch to light mode
 
     # Palette toggle for light mode
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: black
-      accent: blue
+      accent: pink
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
 
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: pink
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
 
 nav:
 
