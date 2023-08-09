@@ -9,6 +9,7 @@ tags:
   - crypto
   - web
 ---
+
 # Git Better
 
 
@@ -57,14 +58,16 @@ Now let's try to understand what the server does.
 
 We were given a tarball of the server:
 
-chall_tar/<br/>
-├── base<br/>
-│   ├── block.ts<br/>
-│   ├── hashing.ts<br/>
-│   └── repository.ts<br/>
-└── server<br/>
-    ├── index.html<br/>
-    └── index.ts<br/>
+```
+chall_tar/
+├── base
+│   ├── block.ts
+│   ├── hashing.ts
+│   └── repository.ts
+└── server
+    ├── index.html
+    └── index.ts
+```
 
 ### The server
 
