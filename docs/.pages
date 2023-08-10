@@ -1,4 +1,7 @@
 title: Welcome
 
 nav:
+    - Welcome: index.md
     - Tags: tags.md
+    - Writeups: writeups
+    - Blogs: blog
