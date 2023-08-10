@@ -58,7 +58,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: pink
+      primary: black
       accent: green
       toggle:
         icon: material/brightness-4
@@ -67,7 +67,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: pink
+      primary: black
       accent: green
       toggle:
         icon: material/brightness-7
@@ -136,7 +136,9 @@ plugins:
   #     print_gain_summary: true
 
   - awesome-pages:
-      collapse_single_pages: true
+      # collapse_single_pages: true
+      # order: desc
+      sort: natural
 
   - minify:
       minify_html: true
