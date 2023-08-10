@@ -33,7 +33,7 @@ The key does not necessarily have to be comprised of printable ascii characters.
 
 ## Solution
 
-Let's use ghidra to look at the function with power of CIA.
+Let's use ghidra to look at the decompiled source.
 
 ![main_gh](main_gh.png)
 

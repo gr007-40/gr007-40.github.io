@@ -269,7 +269,7 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
 extra_css:
-  - stylesheets/extra.scss
+  - stylesheets/extra.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
 copyright: Copyright &copy; 2023 - 2023 Md Abdullahil Kafi
