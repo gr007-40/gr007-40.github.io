@@ -22,17 +22,13 @@ theme:
 
   icon:
     repo: fontawesome/brands/git-alt
-    # TODO: Define icons for each categories
     tag:
       pwn: material/bug
-      # rev: some icon
-      # mkdocs: some icon
 
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
-    # - navigation.path # sponsor feature
     - navigation.prune
     - navigation.indexes
     - navigation.top
@@ -46,11 +42,9 @@ theme:
 
     - header.autohide
 
-    # - content.code.select # sponsor feature
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
-    # - content.tooltips # sponsor feature
     - content.action.view
 
   palette:
@@ -73,71 +67,13 @@ theme:
         icon: material/brightness-7
         name: Switch to dark mode
 
-# Temporarily disabling to test awesome-pages
-# nav:
-#
-#   - Writeups:
-#
-#     - '2023':
-#
-#       - bcactf:
-#
-#         - rev:
-#
-#           - writeups/2023/bcactf/rev/git_better/index.md
-#
-#       - coderush:
-#
-#         - rev:
-#
-#           - writeups/2023/coderush/rev/Cake/index.md
-#           - writeups/2023/coderush/rev/keasy/index.md
-#           - writeups/2023/coderush/rev/matrix/index.md
-#           - writeups/2023/coderush/rev/Nest/index.md
-#
-#         - pwn:
-#
-#           - writeups/2023/coderush/pwn/format_string/index.md
-#           - writeups/2023/coderush/pwn/seed/index.md
-#           - writeups/2023/coderush/pwn/three_sum/index.md
-#
-#     - '2022':
-#
-#       - flaghunt:
-#         - rev:
-#           - writeups/2022/flaghunt/rev/weird_code/index.md
-#
-#   - Blog:
-#
-#     - blog/posts/hello-world.md
-#
-#   - Tags:
-#
-#     - tags.md
-
 
 plugins:
 
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
-  # Sponsor feature
-  # - optimize:
-  #     enabled: true
-  #     cache: true
-  #     cache_dir: .cache/plugins/social
-  #     optimize_png: true
-  #     optimize_png_speed: 4
-  #     optimize_png_strip: true
-  #     optimize_jpg: true
-  #     optimize_jpg_quality: 60
-  #     optimize_jpg_progressive: true
-  #     print_gain: true
-  #     print_gain_summary: true
-
   - awesome-pages:
-      # collapse_single_pages: true
-      # order: desc
       sort_type: natural
 
   - minify:
@@ -175,31 +111,8 @@ plugins:
       enabled: true
       tags_file: tags.md
 
-  # - meta # sponsor feature
-  # - blog: # apparantly it is still not free iguess
-  #     enabled: true
-  #     archive_date_format: MMMM yyyy
-  #     archive_url_date_format: yyyy/MM
-  #     archive_url_format: "archive/{date}"
-  #     archive_toc: true
-  #     categories: true
-  #     blog_toc: true
-  #     post_date_format: full
-  #     draft_if_future_date: true
-  #     categories_toc: true
-  #     categories_allowed:
-  #       - Linux
-  #       - CTF
-  #       - Nixos
-  #       - Guide
 
   - offline
-
-  # - redirects:
-  #     redirect_maps:
-  #         'old.md': 'new.md'
-  #         'old/file.md': 'new/file.md'
-  #         'some_file.md': 'http://external.url.com/foobar'
 
 markdown_extensions:
   # Python Markdown
@@ -227,9 +140,6 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
   - pymdownx.highlight:
       use_pygments: true
-      auto_title: true
-      linenums: true
-      linenums_style: pymdownx-inline
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
@@ -253,8 +163,6 @@ markdown_extensions:
 extra:
   tags:
     pwn: pwn
-    # rev: rev
-    # mkdocs: mkdocs
 
   social:
     - icon: fontawesome/brands/github
