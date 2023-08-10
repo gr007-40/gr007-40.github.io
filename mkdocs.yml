@@ -44,7 +44,6 @@ theme:
 
     - content.code.copy
     - content.code.annotate
-    - content.tabs.link
     - content.action.view
 
   palette:
