@@ -138,7 +138,7 @@ plugins:
   - awesome-pages:
       # collapse_single_pages: true
       # order: desc
-      sort: natural
+      sort_type: natural
 
   - minify:
       minify_html: true
