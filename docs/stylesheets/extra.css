@@ -1,6 +1,6 @@
 [data-md-color-scheme="slate"] {
 
-    --md-hue: 120;
+    --md-hue: 240;
 
     --md-default-fg-color:             hsla(var(--md-hue), 100%, 100%, 1);
     --md-default-fg-color--light:      hsla(var(--md-hue), 100%, 100%, 0.7);
@@ -11,7 +11,7 @@
     --md-default-bg-color--lighter:    hsla(var(--md-hue), 100%, 0%, 0.5);
     --md-default-bg-color--lightest:   hsla(var(--md-hue), 100%, 0%, 0.3);
 
-    --md-code-fg-color:                hsla(var(--md-hue), 15%, 95%, 1);
+    --md-code-fg-color:                hsla(var(--md-hue), 0%, 50%, 1);
     --md-code-bg-color:                hsla(var(--md-hue), 15%, 5%, 1);
 
     --md-code-hl-number-color:         hsla(6, 100%, 50%, 1);
@@ -20,6 +20,7 @@
     --md-code-hl-constant-color:       hsla(250, 100%, 50%, 1);
     --md-code-hl-keyword-color:        hsla(219, 100%, 50%, 1);
     --md-code-hl-string-color:         hsla(150, 100%, 50%, 1);
+    --md-code-hl-name-color:           var(--md-default-fg-color);
 
     --md-typeset-color:                var(--md-default-fg-color);
 
