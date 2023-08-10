@@ -5,7 +5,6 @@ authors:
 tags:
   - pwn
   - coderush
-  - '2023'
 ---
 
 # format_string ftw

@@ -11,6 +11,7 @@ site_description: >-
 
 theme:
   name: material
+  custom_dir: overrides
 
   logo: assets/logo.png
   favicon: assets/favicon.png

@@ -4,7 +4,6 @@ authors:
   - gr007
 tags:
   - rev
-  - '2023'
   - flaghunt
 ---
 

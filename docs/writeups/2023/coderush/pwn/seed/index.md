@@ -5,7 +5,6 @@ authors:
 tags:
   - pwn
   - coderush
-  - '2023'
   - rand
 ---
 # Seed

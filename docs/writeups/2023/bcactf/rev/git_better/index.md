@@ -5,7 +5,6 @@ authors:
 tags:
   - rev
   - bcactf
-  - '2023'
   - crypto
   - web
 ---

@@ -1,6 +1,6 @@
 ---
 hide:
-  - nav
+  - navigation
 ---
 # Tags
 

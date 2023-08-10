@@ -5,7 +5,6 @@ authors:
 tags:
   - rev
   - flaghunt
-  - '2022'
   - xor
   - python
 ---
