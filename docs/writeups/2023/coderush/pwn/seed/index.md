@@ -18,7 +18,7 @@ If you can correctly tell me what my guess is I will give you my precious flag.
 
 **flag format:** `coderush{fl4g}`
 
->Author: `gr007`Let's play a game where I guess a number and you tell what it is.
+>Author: `gr007`
 
 [seed](seed)
 
