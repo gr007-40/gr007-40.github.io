@@ -1,10 +1,6 @@
 ---
-# draft: true
-# date: 2023-08-11
 authors:
   - gr007
-# categories:
-#   - Guide
 tags:
   - mkdocs
 comments: true
