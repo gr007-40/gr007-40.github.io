@@ -1,4 +1,4 @@
-# Cereal 01
+# Cereal Killer 01
 
 ## Description
 
@@ -52,7 +52,7 @@ The following code (after some cleanup) snippets are the interesting parts from 
   }
 ```
 
-It can be easily seen that the flag is built on the stack and printed after the password check is done and our input does not get in the way of our flag being decrypted. That is, we can jump to the code block inside the `if` check and get the flag decrypted and stored in the stack and even print it. We can also zero out the `eax` register inside the debugger after the `memcmp` function is called to have a correct execution and not get any segfault that might arise by directly jumping to the address or if the address is hard to find. I will use this technique whenever I can because it makes reversing with a particular goal in mind easier.
+It can be easily seen that the flag is built on the stack and printed after the password check is done and our input does not get in the way of our flag being decrypted. That is, we can jump to the code block inside the `if` check and get the flag decrypted and stored in the stack and even print it. We can also zero out the `eax` register inside the debugger after the `memcmp` function is called to have a correct execution and not get any segfault that might arise by directly jumping to the address or if the address is hard to find. I will use this technique whenever I can because it makes reversing with a particular goal in mind easier and it works most of the time without any hiss.
 
 ```sh
 [ Legend: Modified register | Code | Heap | Stack | String ]
@@ -99,5 +99,7 @@ You are correct!
 flag{I_am_REDDY_for_FREDDY!!!}
 [Inferior 1 (process 8224) exited normally]
 ```
+
+flag: `flag{I_am_REDDY_for_FREDDY!!!}`
 
 > Note: Here's the [code](./sol.py) for reversing and getting the favourite cereal name correct.
