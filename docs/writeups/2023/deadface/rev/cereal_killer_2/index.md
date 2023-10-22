@@ -5,13 +5,13 @@ authors:
 tags:
   - rev
   - deadface
-  - rev
 ---
 # Cereal Killer 02
 
 ## Description
 
-> Points: 100\
+> Points: 100
+>
 > Created by: `TheZeal0t`
 
 luciafer can be a bit of trouble sometimes, but she can put away the sugary monster cereals with the best of them! She has a favorite, too, and it is based on her favorite monster. See if you can figure it out! Select the binary for your preferred platform.
@@ -74,7 +74,7 @@ void decode_str(char *input,int len,char *flag,char *correct)
 }
 ```
 
-After analyzing the `decode_str` function, we can see that we cannot use the trick we used in `[cereal killer 1](../cereal_killer_1/index.md)` to bypass the check but we can do something pretty interesting instead. The `decode_str` takes our input and uses it as a key for rotating xor cipher to decode the flag string that has been encoded by the original key. And we can see that the first 12 characters are later compared in the main function with the string `CORRECT!!!!!`. Now, if we input our favourite cereal as `CORRECT!!!!!`, we sould get a string comparison with our cereal and `CORRECT!!!!!` in the main function.
+After analyzing the `decode_str` function, we can see that we cannot use the trick we used in [cereal killer 1](../cereal_killer_1/index.md) to bypass the check but we can do something pretty interesting instead. The `decode_str` takes our input and uses it as a key for rotating xor cipher to decode the flag string that has been encoded by the original key. And we can see that the first 12 characters are later compared in the main function with the string `CORRECT!!!!!`. Now, if we input our favourite cereal as `CORRECT!!!!!`, we sould get a string comparison with our cereal and `CORRECT!!!!!` in the main function.
 
 ```sh
 [ Legend: Modified register | Code | Heap | Stack | String ]
