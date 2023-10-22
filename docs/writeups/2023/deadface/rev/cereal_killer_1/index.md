@@ -14,7 +14,7 @@ Enter the flag in the format: flag{Ch33ri0z_R_his_FAV}.
 
 ## Solution
 
-The binary when run, asks for bumpyhassan's favorite breakfast cereal.
+When the binary is run, it asks for bumpyhassan's favorite breakfast cereal.
 
 ```sh
 deadface/rev/cereal1 on  master [?] via 🐍 v3.11.5
@@ -24,6 +24,7 @@ He also happens to be a fan of horror movies from the 1970's to the 1990's.
 What is bumpyhassan's favorite breakfast cereal? adsf
 Sorry, that is not bumpyhassan's favorite cereal. :(
 ```
+
 The following code (after some cleanup) snippets are the interesting parts from looking at it in ghidra.
 
 ```c

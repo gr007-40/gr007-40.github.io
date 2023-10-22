@@ -2,13 +2,26 @@
 
 ## Description
 
-Created by: TheZeal0t
+> Created by: TheZeal0t
 
 luciafer can be a bit of trouble sometimes, but she can put away the sugary monster cereals with the best of them! She has a favorite, too, and it is based on her favorite monster. See if you can figure it out! Select the binary for your preferred platform.
 
 [Download file]()
 
 ## Solution
+
+when the binary is run, it asks for Luciafer's favorite breakfast cereal.
+
+```sh
+deadface/rev/cereal_killer_2 on  master [?]
+❯ ./cereal
+Luciafer also loves Halloween, so she, too, LOVES SPOOKY CEREALS!
+She has different favorite villain from 70-80's horror movies.
+What is Luciafer's favorite breakfast cereal? adfsda
+INCORRECT....: I'm afraid that is not Lucia's current favorite monster cereal.  She is kind of capricious, you know, so it changes often.
+```
+
+The following code (after some cleanup) snippets are the interesting parts from looking at it in ghidra.
 
 ```c
   puts("Luciafer also loves Halloween, so she, too, LOVES SPOOKY CEREALS!");
@@ -156,3 +169,4 @@ gef➤
 ```
 
 flag: `flag{GramPa-KRAMpus-Is-Comin-For-Da-Bad-Kids!!!}`
+
