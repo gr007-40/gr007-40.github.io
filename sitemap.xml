@@ -71,6 +71,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://gr007.tech/writeups/2023/deadface/rev/cereal_killer_4/index.html</loc>
+         <lastmod>2023-10-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://gr007.tech/tags.html</loc>
          <lastmod>2023-10-22</lastmod>
          <changefreq>daily</changefreq>
