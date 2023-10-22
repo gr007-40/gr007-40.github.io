@@ -2,7 +2,7 @@
 
 ## Description
 
-> Created by: TheZeal0t
+> Created by: `TheZeal0t`
 
 How well do you know your DEADFACE hackers? Test your trivia knowledge of our beloved friends at our favorite hactivist collective! We’ll start with bumpyhassan. Even though he grates on TheZeal0t a bit, we find him to be absolutely ADORKABLE!!!
 
