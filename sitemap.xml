@@ -11,7 +11,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://gr007.tech/blog/2023/markdown-syntax-test.html</loc>
+         <loc>https://gr007.tech/blog/2023/11/20/hello-world.html</loc>
          <lastmod>2023-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -37,6 +37,11 @@
     </url>
     <url>
          <loc>https://gr007.tech/blog/index.html</loc>
+         <lastmod>2023-11-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://gr007.tech/blog/archive/2023.html</loc>
          <lastmod>2023-11-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
