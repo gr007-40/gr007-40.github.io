@@ -7,7 +7,7 @@ tags:
   - rev
   - python bytecode
 ---
- # Flaghunt 2022 by CTF_BD
+# Flaghunt 2022 by CTF_BD
 
 ## Weird Code
 
