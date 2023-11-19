@@ -3,17 +3,16 @@ comments: true
 authors:
   - gr007
 tags:
-  - rev
   - flaghunt
-  - xor
-  - python
+  - rev
+  - python bytecode
 ---
 
 # Weird Code
 
 ## Description
 
-Can you find the flag from the [file](./chal.txt) attached?
+Can you find the flag from the [file](./rev/weird_code/chal.txt) attached?
 
 ??? file_contents
     ```

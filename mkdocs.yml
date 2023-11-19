@@ -6,8 +6,7 @@ repo_url: https://github.com/gr007-40/gr007-40.github.io
 repo_name: gr007-40.github.io
 site_author: Md Abdullahil Kafi
 site_description: >-
-  This site is a digital home to my thoughts and experiences.
-  I also share my ctf writeups here time to time.
+  I share my ctf writeups here from time to time.
 
 theme:
   name: material
@@ -27,8 +26,10 @@ theme:
 
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
+    - navigation.sections
     - navigation.prune
     - navigation.indexes
     - navigation.top
@@ -47,12 +48,11 @@ theme:
     - content.action.view
 
   palette:
-
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: green
+      accent: teal
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -61,19 +61,27 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: black
-      accent: green
+      accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
 
-
 plugins:
-
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
   - awesome-pages:
       sort_type: natural
+
+  - blog
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
+      comments_path: "#__comments"
 
   - minify:
       minify_html: true
@@ -89,18 +97,18 @@ plugins:
       fallback_to_build_date: true
 
   - glightbox:
-       touchNavigation: true
-       loop: false
-       effect: zoom
-       slide_effect: slide
-       width: 100%
-       height: auto
-       zoomable: true
-       draggable: true
-       skip_classes:
-         - custom-skip-class-name
-       auto_caption: true
-       caption_position: bottom
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - custom-skip-class-name
+      auto_caption: true
+      caption_position: bottom
 
   - social:
       enabled: true
@@ -109,7 +117,6 @@ plugins:
   - tags:
       enabled: true
       tags_file: tags.md
-
 
   - offline
 

@@ -1,17 +1,19 @@
-# Welcome to MkDocs
+---
+hide:
+  - navigation
+  - toc
+authors:
+  - gr007
+---
+# About me
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+<figure markdown>
+  ![gr007](https://github.com/gr007-40.png){ width="300" loading=lazy }
+  <figcaption>Md Abdullahil Kafi</figcaption>
+</figure>
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+I am a computer science student at IUT, Dhaka. I have been actively involved in cybersecurity related stuffs
+since 2021. I regularly participate in CTFs as a member of [`IUT GENESIS`](https://ctftime.org/team/175924) team.
+We are currently the best in our country according to [`CTFtime.org`](https://ctftime.org/stats/BD). We have won several ctf
+championships in our country. We also participated in organizing some of the reputed CTF competitions
+in our country. I post some of my CTF writeups here. I also tend to blog in this website.

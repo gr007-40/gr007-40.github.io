@@ -3,16 +3,17 @@ comments: true
 authors:
   - gr007
 tags:
-  - rev
   - bcactf
+  - rev
   - crypto
   - web
+  - blockchain
 ---
 
 # Git Better
 
 
-points: 200
+>points: 200
 
 ## Description
 
@@ -32,26 +33,26 @@ Just please don't tamper with it, okay? Actually, I don't trust you. Blockchains
 
 Now go get that second block in, okay?
 
-Author: **skysky**
+>Author: **skysky**
 
 ### Resources
 
 [challs.bcactf.com:31499](https://challs.bcactf.com:31499)
 
-[git_better.tar.gz](./git_better.tar.gz)
+[git_better.tar.gz](./rev/git_better/git_better.tar.gz)
 
-[lost_block.txt](./lost_block.txt)
+[lost_block.txt](./rev/git_better/lost_block.txt)
 
 
 ## Solution
 
 The challange takes us to a webpage that looks like this:
 
-![first look](./first_look.png)
+![first look](./rev/git_better/first_look.png)
 
 As we can see, we were given a portal so that we can submit the block that was lost. We were also given the lost block. This is the output when we submit the lost block.
 
-![second_look](./second_look.png)
+![second_look](./rev/git_better/second_look.png)
 
 Now let's try to understand what the server does.
 
@@ -67,8 +68,6 @@ chall_tar/
     ├── index.html
     └── index.ts
 ```
-
-### The server
 
 The basic functionality of the html is as follows:
 
@@ -149,7 +148,7 @@ The webpage loads the response into the bottom textbox where we see the output f
 
 Let's see if it can detect if we corrupted the lost block.
 
-![corrupted](./corruption.png)
+![corrupted](./rev/git_better/corruption.png)
 
 As we can see, it can indeed detect if we corrupted the lost block.
 
@@ -305,7 +304,7 @@ The output:
 
 Submit the block and get the flag
 
-![flag](./flag.png)
+![flag](./rev/git_better/flag.png)
 
 > Note: `Git Even Better` uses a large prime as the modPrime. There is another way to get a hash collision but that has to do with cryptography. Apparantly the hashing algorithm is also vulnerable to some degree.
 
