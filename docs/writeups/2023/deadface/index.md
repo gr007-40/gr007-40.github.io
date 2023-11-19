@@ -7,12 +7,12 @@ tags:
   - deadface
 ---
 
-# Scoreboard
+# deadface CTF 2023
 
 ![scoreboard](./iut_genesis.png)
-# Cereal Killer 01
+## Cereal Killer 01
 
-## Description
+### Description
 
 > Points: 50
 >
@@ -26,7 +26,7 @@ Enter the flag in the format: flag{Ch33ri0z_R_his_FAV}.
 
 [Download file](./rev/cereal_killer_1/cereal)
 
-## Solution
+### Solution
 
 When the binary is run, it asks for bumpyhassan's favorite breakfast cereal.
 
@@ -122,9 +122,9 @@ flag: `flag{I_am_REDDY_for_FREDDY!!!}`
 ---
 
 
-# Cereal Killer 02
+## Cereal Killer 02
 
-## Description
+### Description
 
 > Points: 100
 >
@@ -134,7 +134,7 @@ luciafer can be a bit of trouble sometimes, but she can put away the sugary mons
 
 [Download file](./rev/cereal_killer_2/cereal)
 
-## Solution
+### Solution
 
 when the binary is run, it asks for Luciafer's favorite breakfast cereal.
 
@@ -256,9 +256,9 @@ flag: `flag{GramPa-KRAMpus-Is-Comin-For-Da-Bad-Kids!!!}`
 ---
 
 
-# Cereal Killer 04
+## Cereal Killer 04
 
-## Description
+### Description
 
 > Points: 200
 >
@@ -272,7 +272,7 @@ Enter the answer as flag{LilithLikesMonsterCereal}.
 
 [Download file](./rev/cereal_killer_4/cereal.jar)
 
-## Solution
+### Solution
 
 When the jar file is run, it asks for a password.
 
@@ -366,9 +366,9 @@ flag: `flag{OctoberIsSharkMonth}`
 ---
 
 
-# Cereal Killer 05
+## Cereal Killer 05
 
-## Description
+### Description
 
 > Points: 50
 >
@@ -380,7 +380,7 @@ Enter the answer as flag{WHATEVER-IT-IS}.
 
 [Download file](./rev/cereal_killer_5/cereal)
 
-## Solution
+### Solution
 
 When the binary is run, it askes for Dr. Geschichter's favourite cereal and entity.
 
@@ -457,9 +457,9 @@ flag: `flag{XENO-DO-DO-DO-DO-DO-DOOOOO}`
 ---
 
 
-# My Daily Macros
+## My Daily Macros
 
-## Description
+### Description
 
 > Points: 70
 >
@@ -471,7 +471,7 @@ Submit the flag as flag{some_text}.
 
 [Download file](./rev/macros/macros.zip)
 
-## Solution
+### Solution
 
 I did not even know what a xlsm file is. And I as the time of writting this writeup, I am still unware what might it be. I opened it in vim and was able to navigate between files inside it like a folder structure. I started to look for any string with `flag{` in it. and found it in the `xl/vbaProject.bin`.
 

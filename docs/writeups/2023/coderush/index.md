@@ -10,9 +10,11 @@ tags:
   - integer overflow
 ---
 
-# format_string ftw
+# Coderush 1.0
 
-## Description
+## format_string ftw
+
+### Description
 
 No one should see what I have in stack! Its only mine!
 
@@ -20,7 +22,7 @@ No one should see what I have in stack! Its only mine!
 
 >Author: `peace_ranger`
 
-## Solution
+### Solution
 
 We are only given a connection information. we can connect to this via netcat. as this is a black box challenge where the clues are given in the challenge name and description, nothing else need to be said. The following exploit should work just fine:
 
@@ -41,9 +43,9 @@ for i in range(1,200):
 
 ---
 
-# Seed
+## Seed
 
-## Description
+### Description
 
 Let's play a game where I guess a number and you tell what it is.
 If you can correctly tell me what my guess is I will give you my precious flag.
@@ -56,7 +58,7 @@ If you can correctly tell me what my guess is I will give you my precious flag.
 
 [seed](./pwn/seed/seed)
 
-## Solution
+### Solution
 
 We are given a binary seed file. Let's load it up with Ghidra.
 
@@ -118,9 +120,9 @@ flag: `coderush{t0d@y_@_533d_70m0rr0w_@7r33}`
 
 ---
 
-# Three Sum
+## Three Sum
 
-## Description
+### Description
 
 I hope ye'all have done [this](https://play.picoctf.org/events/72/challenges/challenge/382) challenge where you sum up two numbers. But don't you think that `three` makes a lot more sense than `two`? We will make things right by adding up three numbers to make it awe sum.
 
@@ -132,7 +134,7 @@ Access the server with: `nc 139.59.0.163 3555`
 
 [chal](./pwn/three_sum/chal)
 
-## Solution
+### Solution
 
 We are given a binary. Let's load it into Ghidra.
 
@@ -240,9 +242,9 @@ flag: `coderush{1_5um_2_5um_3_5um_@we_5um}`
 
 ---
 
-# Chocolate Cake
+## Chocolate Cake
 
-## Description
+### Description
 
 I found the best [recipe](./rev/Cake/recipe) for Cake in the world. But this recipe needs a secret ingredient which I don't
 know. Help me discover the hidden secrets of this recipe and I will make the best cake for you.
@@ -253,7 +255,7 @@ You can access the kitchen with `nc 139.59.0.163 1740`
 
 >Author: `gr007`
 
-## Solution
+### Solution
 
 The recipe wants a secret ingredient when executed. Let's see what we can see in Ghidra.
 I have done some light renaming and so on. now let's try to recreate the recipe. It's pretty amazing how much similar the decompiled source is compared to the actual source code.
@@ -439,9 +441,9 @@ I have done some light renaming and so on. now let's try to recreate the recipe.
 
     ```
 
-### Function breakdown
+#### Function breakdown
 
-#### main
+##### main
 
 ??? main
     ```c
@@ -494,7 +496,7 @@ int main(){
 ```
 As we saw in `serve_the_cake` function, the function compares the output of `bake_a_cake` with a premade cake inside `taste_cake` and returns 1 or 0. so, we can later just take the cake from taste_cake function and find out the secret_ingredient from the cake.
 
-#### bake_a_cake
+##### bake_a_cake
 
 ??? bake_a_cake
     ```c
@@ -531,7 +533,7 @@ char* cake_a_bake(char* cake){
 }
 ```
 
-#### prepare
+##### prepare
 
 ??? prepare
     ```c
@@ -574,7 +576,7 @@ void wait(char* cake){
 }
 ```
 
-#### whisk_and_mix
+##### whisk_and_mix
 
 ??? whisk_and_mix
     ```c
@@ -624,7 +626,7 @@ void separate_and_deadle(char* cake){
 ```
 
 
-#### bake_and_frost
+##### bake_and_frost
 
 ??? bake_and_frost
     ```c
@@ -661,7 +663,7 @@ void defrost_and_dake(char* cake){
 }
 ```
 
-#### serve_the_cake and taste_cake
+##### serve_the_cake and taste_cake
 
 ??? serve_the_cake
     ```c
@@ -803,9 +805,9 @@ flag: `coderush{7h3_c@k3_w@5_5up3r_d3l15h}`
 
 ---
 
-# Nest
+## Nest
 
-## Description
+### Description
 
 Winter fades, spring awakes,
 The cuckoo sings, the earth shakes,
@@ -820,7 +822,7 @@ A nest to build, with utmost zest.
 
 [nest](./rev/Nest/nest)
 
-## Solution
+### Solution
 
 We are given a binary ELF x64 executable. it asks for an input. presumably for the flag.
 after opening the file in ghidra and renaming a couple of variables, we get the following c like source code:
@@ -951,9 +953,9 @@ flag : `coderush{cuck00_0nly_c0m35_1n_5pr1ng}`
 
 ---
 
-# Keasy
+## Keasy
 
-## Description
+### Description
 
 I am a fan of random numbers.
 I encrypted the flag with a random key.
@@ -970,11 +972,11 @@ This [file](./rev/keasy/keasy) has the encrypted flag in it. You can also use th
 
 >Author: `gr007`
 
-### Hint
+#### Hint
 
 The key does not necessarily have to be comprised of printable ascii characters.
 
-## Solution
+### Solution
 
 Let's use ghidra to look at the decompiled source.
 
@@ -1018,9 +1020,9 @@ flag: `coderush{ru5h_0f_n@p0l30n}`
 
 ---
 
-# Matrix
+## Matrix
 
-## Description
+### Description
 
 Matrix is inevitable. Escape the `Matrix`.
 
@@ -1028,7 +1030,7 @@ Matrix is inevitable. Escape the `Matrix`.
 
 [matrix](./rev/matrix/matrix)
 
-## Solution
+### Solution
 
 We are given the `matrix` binary that asks for the one last thing that we have to say. Presumably that has to be the
 flag in order to escape the matrix.

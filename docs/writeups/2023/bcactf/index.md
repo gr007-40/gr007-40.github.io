@@ -10,12 +10,14 @@ tags:
   - blockchain
 ---
 
-# Git Better
+# bcactf 2023
+
+## Git Better
 
 
 >points: 200
 
-## Description
+### Description
 
 We at BCACTF aspire to be unique.
 ~me
@@ -44,7 +46,7 @@ Now go get that second block in, okay?
 [lost_block.txt](./rev/git_better/lost_block.txt)
 
 
-## Solution
+### Solution
 
 The challange takes us to a webpage that looks like this:
 
