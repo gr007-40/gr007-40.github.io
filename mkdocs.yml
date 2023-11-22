@@ -73,7 +73,7 @@ plugins:
   - awesome-pages:
       sort_type: natural
 
-  - blog
+  - blog: blog_toc = true
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
@@ -131,6 +131,7 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+      toc_depth: 1
 
   # Python Markdown Extensions
   - pymdownx.arithmatex:
