@@ -73,7 +73,8 @@ plugins:
   - awesome-pages:
       sort_type: natural
 
-  - blog: blog_toc = true
+  - blog:
+      blog_toc: true
   - rss:
       match_path: blog/posts/.*
       date_from_meta:
