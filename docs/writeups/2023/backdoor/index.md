@@ -236,7 +236,7 @@ flag: `flag{0p3n3d_7h3_s3cr3t_r3d_d00r}`
 
 ## Baby-ebpf
 
-We were given a [ebpf](https://en.wikipedia.org/wiki/EBPF) elf file. The intended solve for this was to load this ebpf and look at the kernel trace. But I just old-school reversed it with objdump.
+We were given a [ebpf](https://en.wikipedia.org/wiki/EBPF) elf [file](./rev/babyebpf/babyebpf.o). The intended solve for this was to load this ebpf and look at the kernel trace. But I just old-school reversed it with objdump.
 
 ```sh
 backdoor/rev/babyebpf on  master [!?]
