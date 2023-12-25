@@ -426,7 +426,7 @@ flag: `flag{c4n't_HESOYAM_7h15_c4n_y0u}`
 
 ## Marks
 
-We were given a [binary] file that is supposed to show us our marks given our name and roll. Let's load it up in ghidra:
+We were given a [binary](./beginner/marks/chal) file that is supposed to show us our marks given our name and roll. Let's load it up in ghidra:
 
 ```c
 undefined8 main(void)
