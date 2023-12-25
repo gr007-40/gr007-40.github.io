@@ -308,5 +308,7 @@ Submit the block and get the flag
 
 ![flag](./rev/git_better/flag.png)
 
+flag: `bcactf{app4r3ntly_y0u_5h0u1dn7_m4k3_y0ur_0wn_h45h_funct10n5}`
+
 > Note: `Git Even Better` uses a large prime as the modPrime. There is another way to get a hash collision but that has to do with cryptography. Apparantly the hashing algorithm is also vulnerable to some degree.
 
