@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 
 site_name: gr007
-site_url: https://gr007.tech
+site_url: https://gr007-40.github.io
 repo_url: https://github.com/gr007-40/gr007-40.github.io
 repo_name: gr007-40.github.io
 site_author: Md Abdullahil Kafi
@@ -102,7 +102,7 @@ plugins:
       loop: false
       effect: zoom
       slide_effect: slide
-      width: 100%
+      width: auto
       height: auto
       zoomable: true
       draggable: true
@@ -195,4 +195,4 @@ extra_css:
   - stylesheets/extra.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
 
-copyright: Copyright &copy; 2023 - 2023 Md Abdullahil Kafi
+copyright: Copyright &copy; 2023 - 2024 Md Abdullahil Kafi
